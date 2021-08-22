@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <ctype.h>
-//#include <scanner.h>
-#include <regex.h>
+
+#include <scanner.h>
+
 
 enum TOKENS {FDT = EOF, SEP = ',', CAD = !isspace};
 
