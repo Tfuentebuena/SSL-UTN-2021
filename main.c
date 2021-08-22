@@ -2,7 +2,18 @@
 #include <scanner.h>
 #include <scanner.c>
 
-int main()
+int main(void)
 {
-    get_token();
+    int token = 0;
+    char* buffer = NULL;
+
+    token = get_token(buffer);
+
+    while(buffer != NULL) {
+
+        printf("%d: %s", token, buffer);
+        token = get_token(buffer);
+        free(buffer);
+    }
+
 }

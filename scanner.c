@@ -1,29 +1,29 @@
 
 #include <scanner.h>
 
-
-enum TOKENS {FDT = EOF, SEP = ',', CAD = !isspace};
-
-char get_token(FILE *input)
+enum TOKENS
 {
-    char c;
-    while (!feof(input))
+    FDT = EOF,
+    SEP = ',',
+    CAD = !isspace
+};
+
+int get_token(char* buffer)
+{
+    int character = getchar();
+
+    if(buffer == NULL)
     {
-        c = getchar();
-        if(c == FDT)
-        {
-            printf("Fin de texto:" + c);
-        }
-
-        if(c == SEP)
-        {
-            printf("Separador" + c);
-        }
-
-        if(c == CAD)
-        {
-            printf("Cadena: " + c);
-        }
-
+        buffer = (char *) malloc(sizeof(*buffer) + 1);
     }
+
+    while(character != FDT)
+    {
+        character = getchar();
+    }
+}
+
+char* get_type(int type)
+{
+
 }
