@@ -9,11 +9,13 @@ int main(void)
 
     token = get_token(buffer);
 
-    while(buffer != NULL) {
+    while(buffer != NULL && token != (-1)) {
 
         printf("%d: %s", token, buffer);
-        token = get_token(buffer);
         free(buffer);
+        token = get_token(buffer);
     }
+
+    return 0;
 
 }
