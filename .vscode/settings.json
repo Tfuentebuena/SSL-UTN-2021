@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "scanner.h": "c",
+        "ctype.h": "c",
+        "stdio.h": "c"
+    }
+}
