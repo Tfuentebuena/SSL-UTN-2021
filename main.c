@@ -6,7 +6,6 @@ enum TOKENS
 {
     FDT = EOF,
     SEP = ',',
-    CAD = !isspace
 };
 
 int main(void)
@@ -14,10 +13,9 @@ int main(void)
     char token;
     int printString = 0;
     int printLine = 0;
-
-    while ((token = get_token()) != FDT)
+// Esta version imprime una cadena vacia de más
+/*     while ((token = get_token()) != FDT)
     {
-        int NotPrintString = !printString;
         switch (token)
         {
         case ' ':
@@ -34,7 +32,8 @@ int main(void)
                 printString = 0;
                 printf("\n");
             }
-            printf("Separador: ");
+            printf("Separador: %c", token);
+            printf("\n");
             printLine = 1;
 
         default:
@@ -43,18 +42,58 @@ int main(void)
                 printf("Cadena: ");
                 printLine = 1;
                 printString = 1;
-            }
-
+            } 
         }
 
-        printf("%c", token);
+        if (token != SEP && token != ' ')
+        {
+            
+            printf("%c", token);
+        }
 
         if (printLine && !printString)
         {
             printLine = 0;
             printf("\n");
         }
+    } */
+
+      while ((token = get_token()) != FDT)
+  {
+    if (isspace(token))
+    {
+      if (printString)
+      {
+        printf("\n");
+      }
+      printString = 0;
+      continue;
     }
+    else if (token == SEP)
+    {
+      if (printString)
+      {
+        printString = 0;
+        printf("\n");
+      }
+      printf("Separador: ");
+      printLine = 1;
+    }
+    else if (!printString)
+    {
+      printf("Cadena: ");
+      printLine = 1;
+      printString = 1;
+    }
+
+    printf("%c", token);
+
+    if (printLine && !printString)
+    {
+      printLine = 0;
+      printf("\n");
+    }
+  }
     printf("Fin de texto: \n");
 
     return 0;
